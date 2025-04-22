@@ -1,0 +1,9 @@
+version: '3.8'
+name: lab_08/zad_01
+services:
+  app:
+    build: .
+    image: lab_08/zad_01
+    ports:
+      - "8080:5000"
+    command: flask --app=app run --host=0.0.0.0
