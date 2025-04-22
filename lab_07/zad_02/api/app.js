@@ -5,10 +5,7 @@ const app = express();
 const PORT = 3003;
 
 // Konfiguracja połączenia z MongoDB
-mongoose.connect('mongodb://db:27017/my-db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect('mongodb://db:27017/my-db')
   .then(() => console.log('Połączono z MongoDB'))
   .catch((err) => console.log('Błąd połączenia z MongoDB: ', err));
 

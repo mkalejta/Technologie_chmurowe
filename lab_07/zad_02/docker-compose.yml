@@ -2,13 +2,11 @@ version: '3.8'
 name: lab_07/zad_02
 services:
   mongodb:
-    image: mongo:4.0.10
+    image: mongo:$MONGO_VERSION
     container_name: db
     ports:
-      - "27019:27017"
+      - "${MONGO_PORT}:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
       MONGO_INITDB_DATABASE: my-db
     volumes:
       - ./data:/data/db
@@ -28,4 +26,5 @@ services:
 
 networks:
   net_A:
+    name: net_A
     external: false

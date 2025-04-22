@@ -4,7 +4,7 @@ rm -rf ./data
 mkdir ./data
 
 docker-compose down
-docker-compose up -d
+docker-compose --env-file .env up -d
 
 # Pętla próbująca połączenia z MongoDB
 for i in {1..30}; do
