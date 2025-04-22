@@ -1,0 +1,31 @@
+version: '3.8'
+name: lab_07/zad_02
+services:
+  mongodb:
+    image: mongo:4.0.10
+    container_name: db
+    ports:
+      - "27019:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: my-db
+    volumes:
+      - ./data:/data/db
+      - ./initdb:/docker-entrypoint-initdb.d
+    networks:
+      - net_A
+  server:
+    image: mkalejta/api-server
+    container_name: server
+    depends_on:
+      - mongodb
+    networks:
+      - net_A
+    ports:
+      - "3003:3003"
+
+
+networks:
+  net_A:
+    external: false
